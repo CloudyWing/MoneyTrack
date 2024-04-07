@@ -1,0 +1,58 @@
+﻿@using CloudyWing.MoneyTrack.Areas.Administrators.Models.RecordModel
+
+@model EditViewModel
+
+@{
+    Layout = "~/Areas/Administrators/Views/Shared/_FormLayout.cshtml";
+}
+
+@if (Model.Id.HasValue) {
+    @Html.HiddenFor(m => m.Id)
+}
+<div class="row mb-3">
+    @Html.LabelFor(m => m.CategoryId, new { Class = "col-sm-3 col-md-2 form-label" })
+    <div class="col-sm-9 col-md-10">
+        @Html.DropDownListFor(m => m.CategoryId, "GetCategories", optionLabel: "")
+        @Html.ValidationMessageFor(m => m.CategoryId)
+    </div>
+</div>
+<div class="row mb-3">
+    @Html.LabelFor(m => m.RecordDate, new { Class = "col-sm-3 col-md-2 form-label" })
+    <div class="col-sm-9 col-md-10">
+        @Html.EditorFor(m => m.RecordDate)
+        @Html.ValidationMessageFor(m => m.RecordDate)
+    </div>
+</div>
+<div class="row mb-3">
+    @Html.LabelFor(m => m.IsIncome, new { Class = "col-sm-3 col-md-2 form-label" })
+    <div class="col-sm-9 col-md-10">
+        <div class="form-check form-check-inline">
+            @Html.RadioButtonFor(m => m.IsIncome, true, new { Id = Html.IdFor(m => m.IsIncome) + "1", Class = "form-check-input" })
+            <label class="form-check-label" for="@(Html.IdFor(m => m.IsIncome) + "1")">收入</label>
+        </div>
+        <div class="form-check form-check-inline">
+            @Html.RadioButtonFor(m => m.IsIncome, false, new { Id = Html.IdFor(m => m.IsIncome) + "2", Class = "form-check-input" })
+            <label class="form-check-label" for="@(Html.IdFor(m => m.IsIncome) + "2")">支出</label>
+        </div>
+        @Html.ValidationMessageFor(m => m.IsIncome)
+    </div>
+</div>
+<div class="row mb-3">
+    @Html.LabelFor(m => m.Amount, new { Class = "col-sm-3 col-md-2 form-label" })
+    <div class="col-sm-9 col-md-10">
+        @Html.EditorFor(m => m.Amount)
+        @Html.ValidationMessageFor(m => m.Amount)
+    </div>
+</div>
+<div class="row mb-3">
+    @Html.LabelFor(m => m.Description, new { Class = "col-sm-3 col-md-2 form-label" })
+    <div class="col-sm-9 col-md-10">
+        @Html.EditorFor(m => m.Description, "MultiLine")
+        @Html.ValidationMessageFor(m => m.Description)
+    </div>
+</div>
+
+@section Buttons {
+    <button type="submit" form="editForm" formaction="@(Url.Action(Model.Id.HasValue ? "Update" : "Create"))" class="btn btn-primary">儲存</button>
+    @Html.ButtonLink("返回", "Index")
+}

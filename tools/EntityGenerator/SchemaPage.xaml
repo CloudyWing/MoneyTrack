@@ -1,0 +1,26 @@
+﻿<Page x:Class="CloudyWing.MoneyTrack.Tools.EntityGenerator.SchemaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CloudyWing.MoneyTrack.Tools.EntityGenerator"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SchemaPage">
+
+    <Grid>
+        <CheckBox Content="全選" Tag="全選" IsChecked="{Binding IsAllChecked}" Margin="50,30,0,0"
+                  Command="{Binding CheckAllCommand}"
+                  CommandParameter="{Binding}" />
+        
+        <ListBox Width="700" Height="300" ItemsSource="{Binding CheckBoxTables}" Background="Azure"  d:ItemsSource="{d:SampleData ItemCount=25}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding Name}" Tag="{Binding Name}" IsChecked="{Binding IsChecked}" Margin="5,5,0,0"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="產出 Entites" HorizontalAlignment="Left" Margin="50,375,0,0" VerticalAlignment="Top" Height="25" Width="100" Command="{Binding SubmitCommand}" />
+
+    </Grid>
+</Page>

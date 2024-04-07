@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/Site.Master" AutoEventWireup="true" CodeBehind="Query.master.cs" Inherits="CloudyWing.MoneyTrack.MasterPages.Query" %>
+
+<%@ Register Src="~/Infrastructure/UserControls/Breadcrumb.ascx" TagPrefix="uc" TagName="Breadcrumb" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1><%: Page.Title %></h1>
+    <hr />
+    <uc:Breadcrumb runat="server" ID="Breadcrumb" />
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">查詢條件</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <asp:ContentPlaceHolder ID="QueryFields" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                <div class="col-12 text-center mb-3">
+                    <asp:ContentPlaceHolder ID="QueryButtons" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <asp:ContentPlaceHolder ID="Buttons" runat="server"></asp:ContentPlaceHolder>
+    </div>
+    <div class="table-responsive mb-3">
+        <asp:ContentPlaceHolder ID="QueryResults" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Script" runat="Server">
+    <asp:ContentPlaceHolder ID="Script" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

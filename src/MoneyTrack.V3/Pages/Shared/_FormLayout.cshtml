@@ -1,0 +1,24 @@
+﻿@{
+  Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.Title</h1>
+<hr />
+<partial name="_Breadcrumb" />
+<form method="post" id="editForm">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="card mb-3">
+        <div class="card-body">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="mb-3 text-center">
+            @RenderSection("Buttons", required: false)
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

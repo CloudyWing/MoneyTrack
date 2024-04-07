@@ -1,0 +1,100 @@
+﻿@using CloudyWing.MoneyTrack.Areas.Administrators.Models.RecordModel
+@using CloudyWing.MoneyTrack.Models.Application
+
+@model IndexViewModel
+
+@{
+    Layout = "~/Areas/Administrators/Views/Shared/_QueryLayout.cshtml";
+}
+
+@section QueryFields {
+    @Html.HiddenFor(m => m.PageNumber)
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="row mb-3">
+                @Html.LabelFor(m => m.CategoryId, new { Class = "col-3 col-md-4 col-form-label" })
+                <div class="col-9 col-md-8">
+                    @Html.DropDownListFor(m => m.CategoryId, "GetCategories", optionLabel: "全選")
+                    @Html.ValidationMessageFor(m => m.CategoryId)
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row mb-3">
+                @Html.LabelFor(m => m.Income, new { Class = "col-3 col-md-4 col-form-label" })
+                <div class="col-9 col-md-8">
+                    <div class="form-check form-check-inline">
+                        @Html.RadioButtonFor(m => m.Income, 0, new { Id = Html.IdFor(m => m.Income) + "0", Class = "form-check-input" })
+                        <label class="form-check-label" for="@(Html.IdFor(m => m.Income) + "0")">全部</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        @Html.RadioButtonFor(m => m.Income, 1, new { Id = Html.IdFor(m => m.Income) + "1", Class = "form-check-input" })
+                        <label class="form-check-label" for="@(Html.IdFor(m => m.Income) + "1")">收入</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        @Html.RadioButtonFor(m => m.Income, 2, new { Id = Html.IdFor(m => m.Income) + "2", Class = "form-check-input" })
+                        <label class="form-check-label" for="@(Html.IdFor(m => m.Income) + "2")">支出</label>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Income)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="row mb-3">
+                @Html.LabelFor(m => m.StartDate, new { Class = "col-3 col-md-4 col-form-label" })
+                <div class="col-9 col-md-8">
+                    @Html.EditorFor(m => m.StartDate)
+                    @Html.ValidationMessageFor(m => m.StartDate)
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row mb-3">
+                @Html.LabelFor(m => m.EndDate, new { Class = "col-3 col-md-4 col-form-label" })
+                <div class="col-9 col-md-8">
+                    @Html.EditorFor(m => m.EndDate)
+                    @Html.ValidationMessageFor(m => m.EndDate)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="row mb-3">
+                @Html.LabelFor(m => m.MinAmount, new { Class = "col-3 col-md-4 col-form-label" })
+                <div class="col-9 col-md-8">
+                    @Html.EditorFor(m => m.MinAmount)
+                    @Html.ValidationMessageFor(m => m.MinAmount)
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row mb-3">
+                @Html.LabelFor(m => m.MaxAmount, new { Class = "col-3 col-md-4 col-form-label" })
+                <div class="col-9 col-md-8">
+                    @Html.EditorFor(m => m.MaxAmount)
+                    @Html.ValidationMessageFor(m => m.MaxAmount)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        @Html.LabelFor(m => m.Description, new { Class = "col-3 col-md-2 col-form-label" })
+        <div class="col-9 col-md-10">
+            @Html.EditorFor(m => m.Description)
+            @Html.ValidationMessageFor(m => m.Description)
+        </div>
+    </div>
+}
+
+@section QueryButtons {
+    <button type="submit" formaction="@Url.Action("Index")" class="btn btn-primary">查詢</button>
+}
+
+@section Buttons {
+    @Html.ButtonLink("新增", "Create")
+}
+
+@Html.Action("GetList", new PagingQueryViewModel<IndexViewModel> { Fields = Model.PrevViewModel ?? Model, PageNumberSelector = "#" + Html.IdFor(m => m.PageNumber) })

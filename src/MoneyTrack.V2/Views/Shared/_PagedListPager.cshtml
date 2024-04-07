@@ -1,0 +1,52 @@
+﻿@model CloudyWing.MoneyTrack.Models.Application.PagedListPagerViewModel
+@{
+    int startPage = Model.PagingMetadata.PageNumber - (10 / 2);
+    if (startPage < 1) {
+        startPage = 1;
+    }
+
+    int endPage = startPage + 10 - 1;
+    if (endPage > Model.PagingMetadata.PageCount) {
+        endPage = Model.PagingMetadata.PageCount;
+    }
+
+    string pagerId = "pager" + new Random().Next(0, 999).ToString("000");
+}
+
+@if (Model != null) {
+    <nav id="@pagerId" aria-label="navigation">
+        <ul class="pagination justify-content-center">
+            @if (Model.PagingMetadata.HasPreviousPage) {
+                <li class="page-item">
+                    <button type="submit" class="page-link" form="@Model.PagingQuery.FormId" data-page-number="1"><<</button>
+                </li>
+                <li class="page-item">
+                    <button type="submit" class="page-link" form="@Model.PagingQuery.FormId" data-page-number="@(Model.PagingMetadata.PageNumber - 1)"><</button>
+                </li>
+            }
+            @for (int i = startPage; i <= endPage; i++) {
+                <li class="page-item">
+                    <button type="submit" class="@(Model.PagingMetadata.PageNumber == i ? "page-link active" : "page-link")" form="@Model.PagingQuery.FormId"
+                            data-page-number="@i">
+                        @i
+                    </button>
+                </li>
+            }
+            @if (Model.PagingMetadata.HasNextPage) {
+                <li class="page-item">
+                    <button type="submit" class="page-link" form="@Model.PagingQuery.FormId" data-page-number="@(Model.PagingMetadata.PageNumber + 1)">></button>
+                </li>
+                <li class="page-item">
+                    <button type="submit" class="page-link" form="@Model.PagingQuery.FormId" data-page-number="@(Model.PagingMetadata.PageCount)">>></button>
+                </li>
+            }
+        </ul>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            $('#@pagerId button').click(function () {
+                $('@Model.PagingQuery.PageNumberSelector').val(this.getAttribute('data-page-number'));
+            });
+        });
+    </script>
+}

@@ -1,0 +1,22 @@
+﻿@using CloudyWing.MoneyTrack.Areas.Administrators.Models.CategoryModel
+
+@model EditViewModel
+@{
+    Layout = "~/Areas/Administrators/Views/Shared/_FormLayout.cshtml";
+}
+
+@if (Model.Id.HasValue) {
+    @Html.HiddenFor(m => m.Id)
+} 
+<div class="row mb-3">
+    @Html.LabelFor(m => m.Name, new  { Class = "col-sm-3 ccol-md-2 col-form-label" })
+    <div class="col-sm-9 ccol-md-10">
+        @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+</div>
+
+@section Buttons {
+    <button type="submit" form="editForm" formaction="@(Url.Action(Model.Id.HasValue ? "Update" : "Create"))" class="btn btn-primary">儲存</button>
+    @Html.ButtonLink("返回", "Index")
+}

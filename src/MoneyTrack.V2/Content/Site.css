@@ -1,0 +1,18 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.validation-summary-errors, .field-validation-error {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+}

@@ -1,0 +1,36 @@
+﻿@using CloudyWing.MoneyTrack.Models
+@{ 
+    IEnumerable<MenuViewModel> menus = GetBreadcrumbItems(MenuViewModel.Instance);
+    MenuViewModel? lastMenu = menus.LastOrDefault();
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        @foreach (MenuViewModel menu in menus) {
+            bool isLast = menu == lastMenu;
+            <li class="breadcrumb-item@(isLast ? " active" : "")" aria-current="@(isLast ? "page" : null)">@menu.Title</li>
+        }
+    </ol>
+</nav>
+
+@functions {
+    private IEnumerable<MenuViewModel> GetBreadcrumbItems(MenuViewModel menu) {
+        if (menu.ChildMenus != null) {
+            foreach (MenuViewModel childMenu in menu.ChildMenus) {
+                if (childMenu.IsMatch(Model.MenuKey)) {
+                    yield return childMenu;
+                    yield break;
+                }
+
+                IEnumerable<MenuViewModel> descendantMenus = GetBreadcrumbItems(childMenu);
+                if (descendantMenus.Any()) {
+                    yield return childMenu;
+
+                    foreach (MenuViewModel descendantMenu in descendantMenus) {
+                        yield return descendantMenu;
+                    }
+                    yield break;
+                }
+            }
+        }
+    }
+}

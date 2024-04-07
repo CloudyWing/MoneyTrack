@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/Site.Master" AutoEventWireup="true" CodeBehind="Form.Master.cs" Inherits="CloudyWing.MoneyTrack.MasterPages.Form" %>
+
+<%@ Register Src="~/Infrastructure/UserControls/Breadcrumb.ascx" TagPrefix="uc" TagName="Breadcrumb" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="Server">
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <h1><%: Page.Title %></h1>
+    <hr />
+    <uc:Breadcrumb runat="server" id="Breadcrumb" />
+    <div class="card mb-3">
+        <div class="card-body">
+            <asp:ContentPlaceHolder ID="Container" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="mb-3 text-center">
+            <asp:ContentPlaceHolder ID="Buttons" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Script" runat="Server">
+    <asp:ContentPlaceHolder ID="Script" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

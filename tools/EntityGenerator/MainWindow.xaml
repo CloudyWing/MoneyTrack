@@ -1,0 +1,16 @@
+﻿<Window x:Class="CloudyWing.MoneyTrack.Tools.EntityGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CloudyWing.MoneyTrack.Tools.EntityGenerator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Top">
+            <Button Content="Schema Page" MinWidth="100" Margin="25,0,25,0" Click="SchemaPageClick" />
+            <Button Content="SQL Page" MinWidth="100" Margin="25,0,25,0" Click="SqlPageClick" />
+        </StackPanel>
+        <Frame x:Name="Main" Margin="0,25,0,0"></Frame>
+    </Grid>
+</Window>

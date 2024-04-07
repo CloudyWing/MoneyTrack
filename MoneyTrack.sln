@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyTrack.V1", "src\MoneyTrack.V1\MoneyTrack.V1.csproj", "{6C9CEC6B-4BA8-48F3-A361-E8DAAB6A30B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1EEB8087-48B2-45F6-BDC0-59ED05F714C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F789D0EA-940B-44E2-B4D8-AC44B97EAB0A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{DF60D7F9-54DB-4EB3-8643-2B083D4E4F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V1Tool", "tools\V1Tool\V1Tool.csproj", "{BA7B3E14-396A-4897-91ED-B16F9266CFF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyTrack.V2", "src\MoneyTrack.V2\MoneyTrack.V2.csproj", "{71B80A99-2985-40E9-AFDA-304BD8F08711}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyTrack.V3", "src\MoneyTrack.V3\MoneyTrack.V3.csproj", "{9FD4323C-7351-4D22-879F-06432992C90B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityGenerator", "tools\EntityGenerator\EntityGenerator.csproj", "{AF58E676-8E7B-4111-A497-9AB921966E2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C9CEC6B-4BA8-48F3-A361-E8DAAB6A30B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9CEC6B-4BA8-48F3-A361-E8DAAB6A30B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9CEC6B-4BA8-48F3-A361-E8DAAB6A30B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9CEC6B-4BA8-48F3-A361-E8DAAB6A30B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7B3E14-396A-4897-91ED-B16F9266CFF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7B3E14-396A-4897-91ED-B16F9266CFF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7B3E14-396A-4897-91ED-B16F9266CFF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7B3E14-396A-4897-91ED-B16F9266CFF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B80A99-2985-40E9-AFDA-304BD8F08711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B80A99-2985-40E9-AFDA-304BD8F08711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B80A99-2985-40E9-AFDA-304BD8F08711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B80A99-2985-40E9-AFDA-304BD8F08711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD4323C-7351-4D22-879F-06432992C90B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD4323C-7351-4D22-879F-06432992C90B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD4323C-7351-4D22-879F-06432992C90B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD4323C-7351-4D22-879F-06432992C90B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF58E676-8E7B-4111-A497-9AB921966E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF58E676-8E7B-4111-A497-9AB921966E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF58E676-8E7B-4111-A497-9AB921966E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF58E676-8E7B-4111-A497-9AB921966E2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C9CEC6B-4BA8-48F3-A361-E8DAAB6A30B7} = {1EEB8087-48B2-45F6-BDC0-59ED05F714C4}
+		{BA7B3E14-396A-4897-91ED-B16F9266CFF0} = {DF60D7F9-54DB-4EB3-8643-2B083D4E4F02}
+		{71B80A99-2985-40E9-AFDA-304BD8F08711} = {1EEB8087-48B2-45F6-BDC0-59ED05F714C4}
+		{9FD4323C-7351-4D22-879F-06432992C90B} = {1EEB8087-48B2-45F6-BDC0-59ED05F714C4}
+		{AF58E676-8E7B-4111-A497-9AB921966E2E} = {DF60D7F9-54DB-4EB3-8643-2B083D4E4F02}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {860E7D54-DF1C-4994-9CDA-9BB58FBBF820}
+	EndGlobalSection
+EndGlobal

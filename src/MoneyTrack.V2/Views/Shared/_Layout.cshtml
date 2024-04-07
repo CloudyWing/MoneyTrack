@@ -1,0 +1,77 @@
+﻿@using CloudyWing.MoneyTrack.Models.Application
+
+@{
+    string transferMessage = TempData["TransferMessage"] as string;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hant">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@PageTitle - @HostEnvironment.ApplicationName @HostEnvironment.Version Ver.</title>
+    @Styles.Render("~/Content/css")
+    @ScriptUtils.RenderDefer("~/bundles/modernizr")
+    @ScriptUtils.RenderDefer("~/bundles/jquery")
+    @ScriptUtils.RenderDefer("~/bundles/jqueryval")
+    @ScriptUtils.RenderDefer("~/bundles/bootstrap")
+    @ScriptUtils.RenderDefer("~/bundles/site")
+    <script defer>
+    @if (!string.IsNullOrWhiteSpace(transferMessage)) {
+        <text>
+            alert('@Html.Raw(transferMessage)');
+        </text>
+    }
+    </script>
+    @RenderSection("Scripts", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                @if (User.Identity.IsAuthenticated) {
+                    @Html.ActionLink(HostEnvironment.ApplicationName, "Index", "Record", new { Area = "Administrators" }, new { Class = "navbar-brand" })
+                } else {
+                    @Html.ActionLink(HostEnvironment.ApplicationName, "Index", "Home", new { Area = "" }, new { Class = "navbar-brand" })
+                }
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        @if (User.Identity.IsAuthenticated) {
+                            int postfix = 0;
+                            foreach (MenuViewModel menu in MenuViewModel.Instance.ChildMenus) {
+                                if (menu.ChildMenus?.Any() == true) {
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown@(postfix)" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@menu.Title</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown@(postfix++)">
+                                            @foreach (MenuViewModel childMenu in menu.ChildMenus) {
+                                                @Html.ActionLink(childMenu.Title, childMenu.Action ?? "Index", childMenu.Controller, new { Area = childMenu.Area }, new { Class = "nav-link" })
+                                            }
+                                        </div>
+                                    </li>
+                                } else {
+                                    <li class="nav-item">
+                                        @Html.ActionLink(menu.Title, menu.Action ?? "Index", menu.Controller, new { Area = menu.Area }, new { Class = "nav-link" })
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="pb-1">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+    <footer class="footer border-top pl-3 text-muted">
+        <div class="container">&copy; @DateTime.Now.Year - @HostEnvironment.ApplicationName</div>
+    </footer>
+</body>
+</html>

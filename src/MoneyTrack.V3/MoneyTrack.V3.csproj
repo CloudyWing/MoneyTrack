@@ -1,0 +1,108 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CloudyWing.$(MSBuildProjectName.Replace(" ", "_").Replace(".V3", ""))</RootNamespace>
+    <AssemblyName>CloudyWing.$(MSBuildProjectName.Replace(".V3", ""))</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.min.css" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.min.css.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.js" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.js.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.min.js" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.min.js.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.js" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.js.map" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.min.js" />
+    <Content Remove="C:\Users\Danieal\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map" />
+    <Content Remove="Pages\Records\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="bootstrap" Version="5.3.3" />
+    <PackageReference Include="CloudyWing.Enumeration" Version="0.1.0" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Dapper.SimpleCRUD" Version="2.3.0" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Infrastructure\Localizations\Resources\ModelBindingMessage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ModelBindingMessage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Infrastructure\Localizations\Resources\ValidationMetadataMessage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ValidationMetadataMessage.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Infrastructure\Localizations\Resources\ModelBindingMessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelBindingMessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Infrastructure\Localizations\Resources\ValidationMetadataMessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationMetadataMessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Records\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Records\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Records\Edit.cshtml" />
+  </ItemGroup>
+
+</Project>

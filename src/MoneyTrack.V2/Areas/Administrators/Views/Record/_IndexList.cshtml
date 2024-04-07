@@ -1,0 +1,57 @@
+﻿@using CloudyWing.MoneyTrack.Areas.Administrators.Models.RecordModel
+@using CloudyWing.MoneyTrack.Models.Application
+
+@model PagedListPagerViewModel<IndexListItemViewModel>
+
+@if (Model.PagedList.Any()) {
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>
+                @(Html.DisplayNameFor(m => Model.PagedList.First().CategoryName))
+            </th>
+            <th>
+                @(Html.DisplayNameFor(m => Model.PagedList.First().RecordDate))
+            </th>
+            <th>
+                @(Html.DisplayNameFor(m => Model.PagedList.First().IsIncome))
+            </th>
+            <th>
+                @(Html.DisplayNameFor(m => Model.PagedList.First().Amount))
+            </th>
+            <th>
+                @(Html.DisplayNameFor(m => Model.PagedList.First().Description))
+            </th>
+            <th></th>
+        </tr>
+        @foreach (IndexListItemViewModel item in Model.PagedList) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.RecordDate)
+                </td>
+                <td>
+                    @(item.IsIncome ? "收入" : "支出")
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Description)
+                </td>
+                <td>
+                    <form method="post">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => item.Id)
+                        @Html.ButtonLink("編輯", "Update", new { Id = item.Id })
+                        <button type="submit" class="btn btn-danger delete" formaction="@Url.Action("Delete")">刪除</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager(Model)
+} else {
+    @Html.EmptyDataMessage()
+}

@@ -1,0 +1,204 @@
+﻿<error errorId="b291a551-411b-4a21-97cf-b0ae9063329b" application="/LM/W3SVC/3/ROOT" host="TPI2022293-LAPT" type="System.InvalidOperationException" message="集合已修改; 列舉作業可能尚未執行。" source="mscorlib" detail="System.InvalidOperationException: 集合已修改; 列舉作業可能尚未執行。&#xD;&#xA;   於 System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)&#xD;&#xA;   於 System.Collections.Generic.Dictionary`2.KeyCollection.Enumerator.MoveNext()&#xD;&#xA;   於 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()&#xD;&#xA;   於 CloudyWing.MoneyTrack.Infrastructure.Controllers.BasicController.ClearInternalTempData()&#xD;&#xA;   於 CloudyWing.MoneyTrack.Infrastructure.Controllers.BasicController.GetInternalTempData[T](String key, Func`1 defaultValueGenerator, Boolean keepForNextRequest)&#xD;&#xA;   於 CloudyWing.MoneyTrack.Areas.Administrators.Controllers.RecordController.Index()&#xD;&#xA;   於 lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c.&lt;BeginInvokeSynchronousActionMethod&gt;b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_0.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__0()&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_2.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__2()&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_2.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__2()&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_2.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__2()&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_5.&lt;BeginInvokeAction&gt;b__4()&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_0.&lt;BeginInvokeAction&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   於 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   於 System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   於 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="MoneyTrack" time="2024-01-31T06:11:32.1490150Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:.AspNetCore.Antiforgery.YkWWtyU_-90=CfDJ8EgO0f7ab3tKmBOS_v2j9zELSCKAsx_eUeikv6XF3PZ9Hk4SD2WctpsUwbg8yY4MWhoqSqNLNggAYoQ4cZBDZ_rQebMCcjSy2hAstrSw3BBMtI0u1v_VGbGH9f5vcYo8-8kqLKTLPUHD87mK-Yg3TVo; .AspNetCore.Antiforgery.vSikHMbRQ2c=CfDJ8EgO0f7ab3tKmBOS_v2j9zG00kIgcZFAElCVF74HCHZJoI_k3FnCRYW3NiHzXpcDNisOyBcn00CAJFHHrKN3zeuAAnnMsoy1QdXDpVzRLW3sw1WDI_qDrGKEGu7Q2JVuVDP1_LCDVq7ROowr8QErQO0; .AspNetCore.Session=CfDJ8EgO0f7ab3tKmBOS%2Fv2j9zH9ouoTIPDrMSy4CDQasaitoCqzGj%2B1tMVqkxicIBUgoNuIs4YNUxx3vg99ngyRwW0kzWmei1xYs2ILDE5lVpPDOLnt69YVlu6n5PWK2p0YOhBtayE%2B7sLnkZPMa8vs7W5PkPQ4t%2BIHI2oHRf76N%2Bqq; ASP.NET_SessionId=wqh4wkz0ayfch1nelvj4i4js; FriendlyUrlsViewSwitcher=Desktop; __RequestVerificationToken=ap_EcKeGKEJkdPza2Nf6jEIjG2Nu99qtN2eRe1_WI-W3OkmTEOs7dTOHZKd1JTUDfzA3296hoBk-BpLQjybh4dgX62iWaX1ky8nK9_Fxgp41; CacheLogin=MoneyTrack&#xD;&#xA;HTTP_HOST:localhost:44364&#xD;&#xA;HTTP_REFERER:https://localhost:44364/Administrators/Category&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36&#xD;&#xA;HTTP_SEC_CH_UA:&quot;Not A(Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;121&quot;, &quot;Chromium&quot;;v=&quot;121&quot;&#xD;&#xA;HTTP_SEC_CH_UA_MOBILE:?0&#xD;&#xA;HTTP_SEC_CH_UA_PLATFORM:&quot;Windows&quot;&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;HTTP_SEC_FETCH_SITE:same-origin&#xD;&#xA;HTTP_SEC_FETCH_MODE:navigate&#xD;&#xA;HTTP_SEC_FETCH_USER:?1&#xD;&#xA;HTTP_SEC_FETCH_DEST:document&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: .AspNetCore.Antiforgery.YkWWtyU_-90=CfDJ8EgO0f7ab3tKmBOS_v2j9zELSCKAsx_eUeikv6XF3PZ9Hk4SD2WctpsUwbg8yY4MWhoqSqNLNggAYoQ4cZBDZ_rQebMCcjSy2hAstrSw3BBMtI0u1v_VGbGH9f5vcYo8-8kqLKTLPUHD87mK-Yg3TVo; .AspNetCore.Antiforgery.vSikHMbRQ2c=CfDJ8EgO0f7ab3tKmBOS_v2j9zG00kIgcZFAElCVF74HCHZJoI_k3FnCRYW3NiHzXpcDNisOyBcn00CAJFHHrKN3zeuAAnnMsoy1QdXDpVzRLW3sw1WDI_qDrGKEGu7Q2JVuVDP1_LCDVq7ROowr8QErQO0; .AspNetCore.Session=CfDJ8EgO0f7ab3tKmBOS%2Fv2j9zH9ouoTIPDrMSy4CDQasaitoCqzGj%2B1tMVqkxicIBUgoNuIs4YNUxx3vg99ngyRwW0kzWmei1xYs2ILDE5lVpPDOLnt69YVlu6n5PWK2p0YOhBtayE%2B7sLnkZPMa8vs7W5PkPQ4t%2BIHI2oHRf76N%2Bqq; ASP.NET_SessionId=wqh4wkz0ayfch1nelvj4i4js; FriendlyUrlsViewSwitcher=Desktop; __RequestVerificationToken=ap_EcKeGKEJkdPza2Nf6jEIjG2Nu99qtN2eRe1_WI-W3OkmTEOs7dTOHZKd1JTUDfzA3296hoBk-BpLQjybh4dgX62iWaX1ky8nK9_Fxgp41; CacheLogin=MoneyTrack&#xD;&#xA;Host: localhost:44364&#xD;&#xA;Referer: https://localhost:44364/Administrators/Category&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36&#xD;&#xA;sec-ch-ua: &quot;Not A(Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;121&quot;, &quot;Chromium&quot;;v=&quot;121&quot;&#xD;&#xA;sec-ch-ua-mobile: ?0&#xD;&#xA;sec-ch-ua-platform: &quot;Windows&quot;&#xD;&#xA;upgrade-insecure-requests: 1&#xD;&#xA;sec-fetch-site: same-origin&#xD;&#xA;sec-fetch-mode: navigate&#xD;&#xA;sec-fetch-user: ?1&#xD;&#xA;sec-fetch-dest: document&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/3/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Projects\CloudyWing\MoneyTrack\src\MoneyTrack.V2\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="MoneyTrack" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="MoneyTrack" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="3" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/3" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Administrators/Record" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Projects\CloudyWing\MoneyTrack\src\MoneyTrack.V2\Administrators\Record" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="54947" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Administrators/Record" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44364" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Administrators/Record" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNetCore.Antiforgery.YkWWtyU_-90=CfDJ8EgO0f7ab3tKmBOS_v2j9zELSCKAsx_eUeikv6XF3PZ9Hk4SD2WctpsUwbg8yY4MWhoqSqNLNggAYoQ4cZBDZ_rQebMCcjSy2hAstrSw3BBMtI0u1v_VGbGH9f5vcYo8-8kqLKTLPUHD87mK-Yg3TVo; .AspNetCore.Antiforgery.vSikHMbRQ2c=CfDJ8EgO0f7ab3tKmBOS_v2j9zG00kIgcZFAElCVF74HCHZJoI_k3FnCRYW3NiHzXpcDNisOyBcn00CAJFHHrKN3zeuAAnnMsoy1QdXDpVzRLW3sw1WDI_qDrGKEGu7Q2JVuVDP1_LCDVq7ROowr8QErQO0; .AspNetCore.Session=CfDJ8EgO0f7ab3tKmBOS%2Fv2j9zH9ouoTIPDrMSy4CDQasaitoCqzGj%2B1tMVqkxicIBUgoNuIs4YNUxx3vg99ngyRwW0kzWmei1xYs2ILDE5lVpPDOLnt69YVlu6n5PWK2p0YOhBtayE%2B7sLnkZPMa8vs7W5PkPQ4t%2BIHI2oHRf76N%2Bqq; ASP.NET_SessionId=wqh4wkz0ayfch1nelvj4i4js; FriendlyUrlsViewSwitcher=Desktop; __RequestVerificationToken=ap_EcKeGKEJkdPza2Nf6jEIjG2Nu99qtN2eRe1_WI-W3OkmTEOs7dTOHZKd1JTUDfzA3296hoBk-BpLQjybh4dgX62iWaX1ky8nK9_Fxgp41; CacheLogin=MoneyTrack" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44364" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44364/Administrators/Category" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" />
+    </item>
+    <item name="HTTP_SEC_CH_UA">
+      <value string="&quot;Not A(Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;121&quot;, &quot;Chromium&quot;;v=&quot;121&quot;" />
+    </item>
+    <item name="HTTP_SEC_CH_UA_MOBILE">
+      <value string="?0" />
+    </item>
+    <item name="HTTP_SEC_CH_UA_PLATFORM">
+      <value string="&quot;Windows&quot;" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="same-origin" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="navigate" />
+    </item>
+    <item name="HTTP_SEC_FETCH_USER">
+      <value string="?1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="document" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name=".AspNetCore.Antiforgery.YkWWtyU_-90">
+      <value string="CfDJ8EgO0f7ab3tKmBOS_v2j9zELSCKAsx_eUeikv6XF3PZ9Hk4SD2WctpsUwbg8yY4MWhoqSqNLNggAYoQ4cZBDZ_rQebMCcjSy2hAstrSw3BBMtI0u1v_VGbGH9f5vcYo8-8kqLKTLPUHD87mK-Yg3TVo" />
+    </item>
+    <item name=".AspNetCore.Antiforgery.vSikHMbRQ2c">
+      <value string="CfDJ8EgO0f7ab3tKmBOS_v2j9zG00kIgcZFAElCVF74HCHZJoI_k3FnCRYW3NiHzXpcDNisOyBcn00CAJFHHrKN3zeuAAnnMsoy1QdXDpVzRLW3sw1WDI_qDrGKEGu7Q2JVuVDP1_LCDVq7ROowr8QErQO0" />
+    </item>
+    <item name=".AspNetCore.Session">
+      <value string="CfDJ8EgO0f7ab3tKmBOS%2Fv2j9zH9ouoTIPDrMSy4CDQasaitoCqzGj%2B1tMVqkxicIBUgoNuIs4YNUxx3vg99ngyRwW0kzWmei1xYs2ILDE5lVpPDOLnt69YVlu6n5PWK2p0YOhBtayE%2B7sLnkZPMa8vs7W5PkPQ4t%2BIHI2oHRf76N%2Bqq" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="wqh4wkz0ayfch1nelvj4i4js" />
+    </item>
+    <item name="FriendlyUrlsViewSwitcher">
+      <value string="Desktop" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="ap_EcKeGKEJkdPza2Nf6jEIjG2Nu99qtN2eRe1_WI-W3OkmTEOs7dTOHZKd1JTUDfzA3296hoBk-BpLQjybh4dgX62iWaX1ky8nK9_Fxgp41" />
+    </item>
+    <item name="CacheLogin">
+      <value string="MoneyTrack" />
+    </item>
+  </cookies>
+</error>

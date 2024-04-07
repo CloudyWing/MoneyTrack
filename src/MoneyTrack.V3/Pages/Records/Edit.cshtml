@@ -1,0 +1,59 @@
+﻿@page
+@using CloudyWing.MoneyTrack.Pages.Records
+@using CloudyWing.MoneyTrack.Pages.Records.Models
+@model EditModel
+@{
+    Layout = "~/Pages/Shared/_FormLayout.cshtml";
+}
+
+@if (Model.Input.Id.HasValue) {
+    <input type="hidden" asp-for="Input.Id" />
+}
+
+<div class="row mb-3">
+    <label asp-for="Input!.CategoryId" class="col-sm-3 col-md-2 form-label"></label>
+    <div class="col-sm-9 col-md-10">
+        <select asp-for="Input!.CategoryId" asp-items="Model.Categories" class="form-select"></select>
+        <span asp-validation-for="Input!.CategoryId"></span>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="Input!.RecordDate" class="col-sm-3 col-md-2 form-label"></label>
+    <div class="col-sm-9 col-md-10">
+        <input asp-for="Input!.RecordDate" type="date" class="form-control" />
+        <span asp-validation-for="Input!.RecordDate"></span>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="Input!.IsIncome" class="col-sm-3 col-md-2 form-label"></label>
+    <div class="col-sm-9 col-md-10">
+        <div class="form-check form-check-inline">
+            <input type="radio" asp-for="Input!.IsIncome" value="true" id="@Html.IdFor(m => m.Input!.IsIncome)1" class="form-check-input" />
+            <label class="form-check-label" for="@(Html.IdFor(m => m.Input.IsIncome))1">收入</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" asp-for="Input!.IsIncome" value="false" id="@Html.IdFor(m => m.Input!.IsIncome)2" class="form-check-input" />
+            <label class="form-check-label" for="@(Html.IdFor(m => m.Input.IsIncome))2">支出</label>
+        </div>
+        <span asp-validation-for="Input!.IsIncome"></span>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="Input!.Amount" class="col-sm-3 col-md-2 form-label"></label>
+    <div class="col-sm-9 col-md-10">
+        <input asp-for="Input!.Amount" type="text" class="form-control" />
+        <span asp-validation-for="Input!.Amount"></span>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="Input!.Description" class="col-sm-3 col-md-2 form-label"></label>
+    <div class="col-sm-9 col-md-10">
+        <textarea asp-for="Input!.Description" class="form-control"></textarea>
+        <span asp-validation-for="Input!.Description"></span>
+    </div>
+</div>
+
+@section Buttons {
+    <button type="submit" form="editForm" formaction="@(Url.Action(Model.Input!.Id.HasValue ? "Update" : "Create"))" class="btn btn-primary">儲存</button>
+    <a class="btn btn-info" asp-page="./Index">返回</a>
+}

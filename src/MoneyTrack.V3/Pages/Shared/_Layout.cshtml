@@ -1,0 +1,118 @@
+﻿@using Microsoft.Extensions.Options
+
+@inject IOptionsSnapshot<ApplicationOptions> AppOptions
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hant">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MoneyTrack.V3</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CloudyWing.MoneyTrack.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                @if (User.Identity?.IsAuthenticated == true) {
+                    <a class="navbar-brand" asp-area="" asp-page="/Administrators/Records/Index">@AppOptions.Value.ApplicationName</a>
+                } else {
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">@AppOptions.Value.ApplicationName</a>
+
+                }
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        @if (User.Identity?.IsAuthenticated == true) {
+                            int postfix = 0;
+                            foreach (MenuViewModel menu in MenuViewModel.Instance.ChildMenus!) {
+                                if (menu.ChildMenus?.Any() == true) {
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown@(postfix)" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@menu.Title</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown@(postfix++)">
+                                            @foreach (MenuViewModel childMenu in menu.ChildMenus) {
+                                                <a class="nav-link text-dark" asp-area="" asp-page="@childMenu.Url">@childMenu.Title</a>
+                                            }
+                                        </div>
+                                    </li>
+                                } else {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="@menu.Url">@menu.Title</a>
+                                    </li>
+                                }
+                            }
+                        } else {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="./Home">Home</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="pb-1">
+        <div id="vueApp" class="container" v-cloak>
+            @RenderBody()
+        </div>
+    </main>
+    <footer class="footer border-top pl-3 text-muted">
+        <div class="container">&copy; @DateTime.Now.Year - @AppOptions.Value.ApplicationName</div>
+    </footer>
+    <environment include="Development">
+        <script src="~/lib/vue/vue.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/vee-validate/vee-validate.js"></script>
+        <script src="~/lib/vee-validate/locale/zh_TW.js"></script>
+        <script src="~/lib/axios/axios.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/vue/vue.min.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/vee-validate/vee-validate.min.js"></script>
+        <script src="~/lib/vee-validate/locale/zh_TW.js"></script>
+        <script src="~/lib/axios/axios.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+        let mixins = [];
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script type="text/javascript">
+        new Vue({
+            el: '#vueApp',
+            mixins: mixins,
+            methods: {
+                validateBeforeSubmit: function (event) {
+                    this.$validator.validateAll().then(result => {
+                        if (!result) {
+                            event.preventDefault();
+                        }
+                    });
+                }
+            },
+            created: function () {
+                @if (ViewContext.ViewData.ModelState.ErrorCount > 0) {
+                    foreach (var pair in ViewContext.ViewData.ModelState.Where(x => x.Value!.Errors.Any())) {
+                        <text>
+                            this.$validator.errors.add({
+                                field: '@pair.Key',
+                                msg: '@Html.Raw(pair.Value!.Errors.First().ErrorMessage)'
+                            });
+                        </text>
+                    }
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>

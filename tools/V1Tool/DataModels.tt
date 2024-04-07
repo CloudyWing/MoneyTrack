@@ -1,0 +1,188 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Configuration" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Data.Entity.Design" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data.Entity.Design.PluralizationServices" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ output extension=".cs" #>
+using System;
+using System.Data;
+
+namespace CloudyWing.MoneyTrack.Models {
+<#
+using (SqlConnection conn = new SqlConnection("Data Source=127.0.0.1,1401;Initial Catalog=MoneyTrack;User ID=MoneyTrackUser;Password=UseMoneyTrack;")) {
+    conn.Open();
+    DataTable schema = conn.GetSchema("Tables");
+    foreach (DataRow row in schema.Rows) {
+        if (Regex.IsMatch(row["TABLE_NAME"].ToString(), @"^.+\d{8}$|^.+bak$", RegexOptions.IgnoreCase)) {
+            continue;
+        }
+#>
+    public sealed class <#= GetClassName(row["TABLE_NAME"].ToString()) #> : DataModel {
+        public static readonly <#= GetClassName(row["TABLE_NAME"].ToString()) #> Instance = new <#= GetClassName(row["TABLE_NAME"].ToString()) #>();
+
+<#
+        String sql = String.Format(@"
+SELECT C.TABLE_NAME, C.COLUMN_NAME, C.COLUMN_DEFAULT, C.IS_NULLABLE, DATA_TYPE, C.CHARACTER_MAXIMUM_LENGTH, C.NUMERIC_PRECISION, C.NUMERIC_SCALE, KCU.COLUMN_NAME 'PK_COLUMN', COLUMNPROPERTY(OBJECT_ID(C.TABLE_NAME), C.COLUMN_NAME, 'IsIdentity') 'IS_IDENTITY'
+FROM INFORMATION_SCHEMA.COLUMNS C
+LEFT JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS TC
+ON C.TABLE_CATALOG = TC.TABLE_CATALOG AND C.TABLE_NAME = TC.TABLE_NAME AND TC.CONSTRAINT_TYPE = 'PRIMARY KEY'
+LEFT JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU
+ON TC.CONSTRAINT_NAME = KCU.CONSTRAINT_NAME AND C.TABLE_NAME = KCU.TABLE_NAME AND C.COLUMN_NAME = KCU.COLUMN_NAME
+WHERE C.TABLE_NAME = '{0}'
+ORDER BY C.TABLE_NAME, C.ORDINAL_POSITION",
+            row["TABLE_NAME"].ToString()
+        );
+        
+        using (SqlCommand cmd = new SqlCommand(sql, conn)) {
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+            
+            DataRowCollection drc = dt.Rows;
+#>
+        private <#= GetClassName(row["TABLE_NAME"].ToString()) #>() {
+<#
+            foreach (DataRow dr in drc) {
+                String column = dr["COLUMN_NAME"].ToString();
+                String allowNull = String.Equals(dr["IS_NULLABLE"].ToString(), "YES", StringComparison.OrdinalIgnoreCase).ToString().ToLower();
+                String hasDefault = (dr["COLUMN_DEFAULT"] != DBNull.Value).ToString().ToLower();
+                String dbType = GetSqlDbType(dr["DATA_TYPE"].ToString());
+                bool hasSize = dr["CHARACTER_MAXIMUM_LENGTH"] != DBNull.Value;
+                bool hasPrecision = dr["NUMERIC_PRECISION"] != DBNull.Value;
+                String isPK = (dr["PK_COLUMN"] != DBNull.Value).ToString().ToLower();
+                String isIdentity = Convert.ToBoolean(dr["IS_IDENTITY"]).ToString().ToLower();
+                
+                if (hasSize) {
+                    String size = dr["CHARACTER_MAXIMUM_LENGTH"].ToString();
+#>
+            <#= column #> = new TableField(this, "<#= FixColumnName(column) #>", <#= dbType #>, <#= size #>, <#=isPK #>, <#= allowNull #>, <#= hasDefault #>);
+<#
+                } else if (hasPrecision) {
+                    String precision = dr["NUMERIC_PRECISION"].ToString();
+                    String scale = dr["NUMERIC_SCALE"].ToString();
+#>
+            <#= column #> = new TableField(this, "<#= FixColumnName(column) #>", <#= dbType #>, <#= precision #>, <#= scale #>, <#= isPK #>, <#= allowNull #>, <#= hasDefault #>, <#= isIdentity #>);
+<#
+                } else {
+#>
+            <#= column #> = new TableField(this, "<#= FixColumnName(column) #>", <#= dbType #>, <#=isPK#>, <#= allowNull #>, <#= hasDefault #>, <#= isIdentity #>);
+<#
+                }
+            }
+
+#>
+        }
+<#
+            foreach (DataRow dr in drc) {
+                String column = dr["COLUMN_NAME"].ToString();
+#>
+
+        public TableField <#= column #> { get; private set; }
+<#
+            }
+        }
+#>
+    
+        public override string TableName => "<#= row["TABLE_NAME"].ToString() #>";
+    }
+
+<#
+    }
+}
+#>
+}
+<#+
+private string GetClassName(String name) {
+    string[] tmps = name.Split(new char[] {'_'}, StringSplitOptions.RemoveEmptyEntries);
+    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+    List<string> rets = new List<string>();
+    foreach (string tmp in tmps) {
+        string ret = ti.ToTitleCase(tmp);
+
+        rets.Add(ret);
+    }
+    return PluralizationService.CreateService(System.Globalization.CultureInfo.GetCultureInfo("en-us")).Singularize(string.Join("", rets.ToArray())) + "Model";
+}
+
+private string FixColumnName(String name) {
+    return name;
+}
+
+private string GetSqlDbType(string type) {
+        switch (type.Trim().ToLower()) {
+    case "bigint":
+        return "SqlDbType.BigInt";
+    case "binary":
+        return "SqlDbType.Binary";
+    case "bit":
+        return "SqlDbType.Bit";
+    case "char":
+        return "SqlDbType.Char";
+    case "date":
+        return "SqlDbType.Date";
+    case "datetime":
+        return "SqlDbType.DateTime";
+    case "datetime2":
+        return "SqlDbType.DateTime2";
+    case "datetimeoffset":
+        return "SqlDbType.DateTimeOffset";
+    case "decimal":
+        return "SqlDbType.Decimal";
+    case "FILESTREAM":
+        return "SqlDbType.VarBinary";
+    case "float":
+        return "SqlDbType.Float";
+    case "image":
+        return "SqlDbType.Image";
+    case "int":
+        return "SqlDbType.Int";
+    case "money":
+        return "SqlDbType.Money";
+    case "nchar":
+        return "SqlDbType.NChar";
+    case "ntext":
+        return "SqlDbType.NText";
+    case "nvarchar":
+        return "SqlDbType.NVarChar";
+    case "real":
+        return "SqlDbType.Real";
+    case "smalldatetime":
+        return "SqlDbType.SmallDateTime";
+    case "smallint":
+        return "SqlDbType.SmallInt";
+    case "smallmoney":
+        return "SqlDbType.SmallMoney";
+    case "text":
+        return "SqlDbType.Text";
+    case "time":
+        return "SqlDbType.Time";
+    case "timestamp":
+        return "SqlDbType.Timestamp";
+    case "tinyint":
+        return "SqlDbType.TinyInt";
+    case "udt":
+        return "SqlDbType.Udt";
+    case "uniqueidentifier":
+        return "SqlDbType.UniqueIdentifier";
+    case "varbinary":
+        return "SqlDbType.VarBinary";
+    case "varchar":
+        return "SqlDbType.VarChar";
+    case "variant":
+        return "SqlDbType.Variant";
+    case "xml":
+        return "SqlDbType.Xml";
+    case "numeric":
+        return "SqlDbType.Decimal";
+    default:
+        throw new ArgumentException(type + " not in SqlDbType process list.");
+    }
+}
+#>

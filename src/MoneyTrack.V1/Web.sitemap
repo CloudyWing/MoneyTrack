@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title=""  description="">
+    <siteMapNode url="~/Administrators/RecordIndex.aspx" title="新增交易"  description="" />
+    <siteMapNode title="設定"  description="">
+      <siteMapNode url="~/Administrators/CategoryIndex.aspx" title="分類管理"  description="" />
+    </siteMapNode>
+    <siteMapNode url="~/Logout.aspx" title="登出"  description="" />
+  </siteMapNode>
+</siteMap>

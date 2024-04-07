@@ -1,0 +1,23 @@
+﻿@model PaginationViewModel
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if (Model.HasPreviousPage) {
+            <li class="page-item"><button type="submit" class="page-link" asp-page="@Model.Page" asp-page-handler="@Model.PageHandler" asp-route-pageNumber="1">&lt;&lt;</button></li>
+            <li class="page-item"><button type="submit" class="page-link" asp-page="@Model.Page" asp-page-handler="@Model.PageHandler" asp-route-pageNumber="@(Model.PageNumber - 1)">&lt;</button></li>
+        }
+
+        @for (int i = 1; i <= Model.PageCount; i++) {
+            if (i == Model.PageNumber) {
+                <li class="page-item active"><span class="page-link">@i</span></li>
+            } else {
+                <li class="page-item"><button type="submit" class="page-link" asp-page="@Model.Page" asp-route-pageNumber="@i">@i</button></li>
+            }
+        }
+
+        @if (Model.HasNextPage) {
+            <li class="page-item"><button type="submit" class="page-link" asp-page="@Model.Page" asp-route-pageNumber="@(Model.PageNumber + 1)">&gt;</button></li>
+            <li class="page-item"><button type="submit" class="page-link" asp-page="@Model.Page" asp-route-pageNumber="@(Model.PageCount)">&gt;&gt;</button></li>
+        }
+    </ul>
+</nav>
